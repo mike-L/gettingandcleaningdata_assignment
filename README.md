@@ -25,11 +25,11 @@ Contained in this repository are three files:
 3. Run the run_analysis.R file
 
 ##What the run_analysis.R script does (in a nutshell)
-run_analysis.R performs the following steps to collage the data:
+run_analysis.R performs the following steps to collate the data:
 
 1. Read in the features list (features.txt) into a dataframe
 
-2. Cleans the feature names of commas, dashes and brackets
+2. Cleans the feature names of commas, dashes and brackets, replacing them with an underscore ('_')
 
 3. Identifies all mean and standard deviation measurements. For the purposes of this assignment, this is defined as all feature names containing the words 'mean', 'Mean', 'Std' or 'std'.
 
@@ -50,10 +50,14 @@ run_analysis.R performs the following steps to collage the data:
 
 ##Why we can consider tidy_dataset.txt to be tidy
 
-1. One observation per row
+###1. There is only one observation per row
+Each row in the data pertains to one activity for one subject only.
 
-2. One variable per column
+###2. One variable per column
+Each variable is in its own column.
 
-3. Every variable has a name and it is clear that each is a summary of the original data
+###3. Every variable has a name and it is clear that each is a summary of the original data
+Unlike the source files, every variable in tidy_dataset.txt has a name (in the file header) and the prefix for each variable name ('subject_activity_avg') indicates that it is not the same as its equivalent in the source data; a transformation has been performed.
 
-4. Activity labels are descriptive
+###4. Activity labels are descriptive
+Rather than show just the activity id as a number on its own, the dataset contains descriptive labels indicating whether the subject is laying, sitting, standing, walking, walking downstairs or walking upstarirs.

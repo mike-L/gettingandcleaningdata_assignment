@@ -1,18 +1,23 @@
 #Readme - Getting and Cleaning Data Course Project
 This github respository has been created as part of the course project for the JHU Coursera class 'Getting and Cleaning Data'. This project has been performed on on smartphone activity data provided by the UCI Machine Learning Repository (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones#). The aim of this project is to generate a tidy dataset that:
 
-- Isolates the mean and std deviations of all measurements from the smartphones data
-- Summarises the identified measurements by subject (participant) and activity
-- Provides descriptive labels for each activity
-- Provides a descriptive name for each variable
+* Isolates the mean and std deviations of all measurements from the smartphones data
+* Summarises the identified measurements by subject (participant) and activity
+* Provides descriptive labels for each activity
+* Provides a descriptive name for each variable
 
 Contained in this repository are three files:
-* tidy_dataset.txt - the summary of the requested measurments, summarised by subject and activity
+
+* tidy_dataset.txt - the summary of the requested measurments, summarised by subject and activity.
 * Codebook.md - A document describing the fields in tidy_dataset.txt
 * run_analysis.R - the R script used to collate and clean the raw data
 
+The tidy_dataset.txt can be read into R using the following command:
+
+tidy_dataset <- read.table('tidy_dataset.txt', header=TRUE)
+
 ##How to recreate this dataset using run_analysis.R
-1. Download and unzip the files from the following link: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+1. Download and unzip the raw data files from the following link: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 2. Place the following files in your working directory:
 * features.txt
 * activity_labels.txt
@@ -49,6 +54,7 @@ run_analysis.R performs the following steps to collate the data:
 8. Outputs the resulting dataframe as 'tidy_data.txt' using write.table()
 
 ##Why we can consider tidy_dataset.txt to be tidy
+Note: For this exercise I have chosen to leave the data in wide format.
 
 ###1. There is only one observation per row
 Each row in the data pertains to one activity for one subject only.
@@ -57,7 +63,12 @@ Each row in the data pertains to one activity for one subject only.
 Each variable is in its own column.
 
 ###3. Every variable has a name and it is clear that each is a summary of the original data
-Unlike the source files, every variable in tidy_dataset.txt has a name (in the file header) and the prefix for each variable name ('subject_activity_avg') indicates that it is not the same as its equivalent in the source data; a transformation has been performed.
+Unlike the source files, every variable in tidy_dataset.txt has a name (in the file header) and the prefix for each variable name ('subject_activity_avg') indicates that it is not the same as its equivalent in the source data; a transformation has been performed. Additionally, shorthand words have been expanded to their full form, i.e:
+
+* Acc = Acceleration
+* Gyro = Gyroscope
+* Mag=Magnitude
+* BodyBody = Body (probably a mistake in the file)
 
 ###4. Activity labels are descriptive
 Rather than show just the activity id as a number on its own, the dataset contains descriptive labels indicating whether the subject is laying, sitting, standing, walking, walking downstairs or walking upstarirs.

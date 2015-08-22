@@ -63,7 +63,7 @@ combined <- combined[,c(1,82,2:81)]
 #now average each variable by subject and activity_label
 #as a note, I generated the summarise code by writing out the table of variable
 #names and then generating the code dynamically in excel
-#lazy, slightly inefficient (would have rathered keep it all in R), but it works:)
+#lazy, slightly inefficient, but it works:)
 averaged <- 
   combined %>%
   group_by(subject, activity_name) %>%

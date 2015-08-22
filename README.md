@@ -26,16 +26,27 @@ Contained in this repository are three files:
 
 ##What the run_analysis.R script does (in a nutshell)
 run_analysis.R performs the following steps to collage the data:
+
 1. Read in the features list (features.txt) into a dataframe
+
 2. Cleans the feature names of commas, dashes and brackets
-3. 
 
-1. Merge the training and the test datasets to create one data set.
-2. Extract the mean and standard deviation for each measurement. 
-3. Provide activity names to name the activities in the data set
-4. Appropriately label the data set with descriptive variable names. 
-5. Generate an independent tidy data set with the average of each variable for each activity and each subject.
+3. Identifies all mean and standard deviation measurements. For the purposes of this assignment, this is defined as all feature names containing the words 'mean', 'Mean', 'Std' or 'std'.
 
+4. For the test and train data, we then:
+* Read in the X data (X_train.txt,  X_test.txt)
+* Isolate the desired features in the data (Mean and Std Deviation measures)
+* Read in the subject records (subject_test/train.txt), naming the subject vector 'subject_id'
+* Read in the activity id records, naming the activity vector 'activity_id'
+* Bind the subject, X and activity data together in one dataframe
+
+5. Binds together the test and train data into one dataframe
+
+6. Merges in the activity labels to provide better descriptions of the activity
+
+7. Summarises all the measures by subject and activity level. The summarisation function used is mean().
+
+8. Outputs the resulting dataframe as 'tidy_data.txt' using write.table()
 
 ##Why we can consider tidy_dataset.txt to be tidy
 
